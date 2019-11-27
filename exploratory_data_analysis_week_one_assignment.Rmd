@@ -5,8 +5,8 @@ output: html_notebook
 
 ```{r init}
 
-install.packages("tidyverse")
-install.packages("janitor")
+#install.packages("tidyverse")
+#install.packages("janitor")
 library(tidyverse)
 library(lubridate)
 library(janitor)
@@ -56,6 +56,7 @@ data_raw <- read_delim(file = "household_power_consumption.txt", delim = ";")
 head(data_raw)
 
 data_clean <- data_raw %>% clean_names(case = "snake") %>% mutate(date = dmy(date))
+
 head(data_clean)
 str(data_clean)
 dim(data_clean)
@@ -64,9 +65,17 @@ dim(data_clean)
 ```
 
 
-```{r}
+```{r plot1.R}
 
+global_active_power_data <- data_clean %>%
+  filter(date > ("2007-01-31")) %>%
+  filter(date < ("2007-02-03"))
 
+head(global_active_power_data)
+tail(global_active_power_data)
+dim(global_active_power_data)
+
+with(global_active_power_data, hist(global_active_power, col = "red"))
 
 
 

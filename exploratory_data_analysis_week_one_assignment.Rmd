@@ -99,6 +99,7 @@ with(global_active_power_data, plot(x = date_time, y = global_active_power, type
 
 ```
 
+
 ```{r plot 3}
 
 energy_sub_metering_data <- data_clean %>%
@@ -109,14 +110,22 @@ energy_sub_metering_data <- data_clean %>%
 
 glimpse(energy_sub_metering_data)
 
-with(energy_sub_metering_data, plot(x = date_time, y = (sub_metering_1), type = "l", ylab = "Energy sub metering"))
-#lines(x = date_time, y = sub_metering_2)
-#?lines
+plot.new()
+with(energy_sub_metering_data, plot(x = date_time,
+                                    y = sub_metering_1,
+                                    type = "l",
+                                    ylab = "Energy sub metering",
+                                    xlab = ""))
 
-#How do I build on this?!
+#devices issues, moved to simple R script
 
 
+```
 
+
+```{r plot 4}
+
+#used R script to avoid device issues
 
 ```
 

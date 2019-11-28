@@ -65,7 +65,7 @@ dim(data_clean)
 ```
 
 
-```{r plot1.R}
+```{r plot1}
 
 global_active_power_data <- data_clean %>%
   filter(date > ("2007-01-31")) %>%
@@ -82,7 +82,7 @@ with(global_active_power_data, hist(global_active_power, col = "red", main = "Gl
 ```
 
 
-```{r plot2.R}
+```{r plot2}
 ?plot
 
 global_active_power_data <- data_clean %>%
@@ -94,6 +94,27 @@ global_active_power_data <- data_clean %>%
 glimpse(global_active_power_data)
 
 with(global_active_power_data, plot(x = date_time, y = global_active_power, type = "l"))
+
+
+
+```
+
+```{r plot 3}
+
+energy_sub_metering_data <- data_clean %>%
+  filter(date > ("2007-01-31")) %>%
+  filter(date < ("2007-02-03")) %>% 
+  mutate(date_time = paste(date, time)) %>% 
+  mutate(date_time = ymd_hms(date_time))
+
+glimpse(energy_sub_metering_data)
+
+with(energy_sub_metering_data, plot(x = date_time, y = (sub_metering_1), type = "l", ylab = "Energy sub metering"))
+#lines(x = date_time, y = sub_metering_2)
+#?lines
+
+#How do I build on this?!
+
 
 
 
